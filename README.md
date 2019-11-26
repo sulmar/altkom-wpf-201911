@@ -36,9 +36,9 @@
 
 ## Szablony (Templates)
 
-## Szablon danych (DataTemplate)
+### Szablon danych (DataTemplate)
 
-## Szablon kontrolek (ControlTemplate)
+### Szablon kontrolek (ControlTemplate)
 
 ## Zasoby (Resources)
 ### Zasoby statyczne
