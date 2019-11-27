@@ -6,5 +6,6 @@
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
         public bool IsRemoved { get; set; }
+
     }
 }

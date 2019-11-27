@@ -1,12 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Altkom.Shop.Models\Altkom.Shop.Models.csproj" />
-    <ProjectReference Include="..\FakeServices\FakeServices.csproj" />
     <ProjectReference Include="..\IServices\IServices.csproj" />
   </ItemGroup>
 
