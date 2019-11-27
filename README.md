@@ -147,6 +147,12 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 ### Wiązanie kontrolek z danymi (DataBinding)
 ### Kontekst danych (DataContext)
 ### Typy wiązania danych
+
+- TwoWay
+- OneWay
+- OneTime
+- OneWayToSource
+
 ### Implementacja notyfikacji (INotifyPropertyChanged)
 
 ## Konwertery
