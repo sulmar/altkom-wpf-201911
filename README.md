@@ -2,7 +2,48 @@
 
 ## XAML
 
+- XML + {markup extension} = XAML
+
 ###  Atrybuty i elementy
+
+- Zawartość taga
+~~~ xaml
+ <Button>Hello World</Button>
+~~~ 
+
+Zawartość pomiędzy tagami trafia do domyślnej właściwości. W przypadku kontrolki **ContentControl** jest to właściwość **Content**.
+
+- Za pomocą atrybutu
+~~~ xaml
+ <Button Content="Hello World" />
+~~~
+
+
+- Za pomocą elementu
+~~~ xaml
+ <Button>
+    <Button.Content>
+        Hello World
+    </Button.Content>
+</Button>
+~~~
+
+- Praktyczne zastosowanie
+
+~~~ xaml
+ <Button Content="Send">
+    <Button.Background>
+        <LinearGradientBrush 
+            StartPoint="0.0,0"
+            EndPoint="1,0">
+            <GradientStop Color="Green" Offset="0" />
+            <GradientStop Color="Yellow" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+        </LinearGradientBrush>
+    </Button.Background>
+ </Button>
+~~~
+
 ### Markup Extensions
 
 
