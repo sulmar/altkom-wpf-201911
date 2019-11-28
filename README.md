@@ -127,8 +127,41 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 
 
 ## Style (Styles)
+
 ### Utworzenie stylu
+~~~ xaml
+<SolidColorBrush x:Key="MyBackgroundBrush" Color="blue" />
+    <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
+
+    <Style x:Key="DefaultButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+~~~
+
+
+### Styl dla danego typu
+~~~ xaml
+ <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+    </Style>
+~~~
+
 ### Dziedziczenie stylu
+
+~~~ xaml
+
+    <Style x:Key="CustomersButtonStyle" TargetType="Button"
+               BasedOn="{StaticResource DefaultButtonStyle}"  >
+        <Setter Property="Background" Value="Green" />
+        <Setter Property="Width" Value="150" />
+
+    </Style>
+~~~
+
 
 ## Szablony (Templates)
 
