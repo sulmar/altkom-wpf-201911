@@ -24,5 +24,10 @@ namespace Altkom.Shop.WpfClient.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // this.DataContext 
+        }
     }
 }

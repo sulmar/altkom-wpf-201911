@@ -3,6 +3,8 @@ using FakeServices;
 using IServices;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
 {
@@ -11,7 +13,22 @@ namespace Altkom.Shop.ViewModels
     {
         public IEnumerable<Customer> Customers { get; private set; }
 
+        private Customer selectedCustomer;
+        public Customer SelectedCustomer 
+        { 
+            get => selectedCustomer;
+            set
+            {
+                selectedCustomer = value;
+                SendCommand.OnCanExecuteChanged();
+
+                SelectedCustomer.PropertyChanged += SelectedCustomer_PropertyChanged;
+            }
+        }
+
         private readonly ICustomerService customerService;
+
+        public RelayCommand SendCommand { get; private set; }
 
         // ctor
         public CustomersViewModel()
@@ -24,13 +41,30 @@ namespace Altkom.Shop.ViewModels
         {
             this.customerService = customerService;
 
+            SendCommand = new RelayCommand(Send, CanSend);
+
             Load();
+        }
+
+        private void SelectedCustomer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            SendCommand.OnCanExecuteChanged();
         }
 
         private void Load()
         {
             Customers = customerService.Get();
+        }
 
+        public void Send()
+        {
+            Trace.WriteLine($"Sending email to {SelectedCustomer.FullName}...");
+        }
+
+        public bool CanSend()
+        {
+            return SelectedCustomer != null
+                && !string.IsNullOrEmpty(SelectedCustomer.FirstName);
         }
     }
 }

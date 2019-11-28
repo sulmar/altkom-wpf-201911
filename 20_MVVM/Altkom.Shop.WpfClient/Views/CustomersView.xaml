@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
       xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+      xmlns:m="clr-namespace:Altkom.Shop.Models;assembly=Altkom.Shop.Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomersView">
@@ -13,19 +14,83 @@
         <vm:CustomersViewModel />
     </Page.DataContext>
 
+    <Page.Resources>
+
+        <Style x:Key="CustomerTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Width" Value="100" />
+        </Style>
+
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Width" Value="50" />
+        </Style>
+        
+        <DataTemplate x:Key="CustomerTemplate"
+                      DataType="{x:Type m:Customer}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Style="{StaticResource ImageStyle}" Source="{Binding Photo}" />
+                <TextBlock Style="{StaticResource CustomerTextBlockStyle}" Text="{Binding FirstName}" />
+                <TextBlock Style="{StaticResource CustomerTextBlockStyle}" Text="{Binding LastName}" />
+                <TextBlock Style="{StaticResource CustomerTextBlockStyle}" Text="{Binding City}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid>
 
-        <StackPanel>
-
-        <ListBox ItemsSource="{Binding Path=Customers, Mode=OneWay}"
-                 DisplayMemberPath="FullName" >
+        <!--<ListBox ItemsSource="{Binding Path=Customers, Mode=OneWay}"
+                 SelectedItem="{Binding SelectedCustomer}"
+                 ItemTemplate="{StaticResource CustomerTemplate}" >
            
-        </ListBox>
+        </ListBox>-->
 
-            <ComboBox ItemsSource="{Binding Customers, Mode=OneTime}"
-                    DisplayMemberPath="FullName" />
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Customers -->
+        <DataGrid ItemsSource="{Binding Customers}"
+                  SelectedItem="{Binding SelectedCustomer}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Style="{StaticResource ImageStyle}" Source="{Binding Photo}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Miasto" Binding="{Binding City}" />
+                <DataGridCheckBoxColumn Binding="{Binding IsRemoved}" />
+
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+        <!-- Selected Customer -->
+        <StackPanel Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="FontSize" Value="20" />
+                </Style>
+            </StackPanel.Resources>
+            
+            <TextBox Text="{Binding SelectedCustomer.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding SelectedCustomer.LastName}" />
+            <TextBox Text="{Binding SelectedCustomer.FullName}" />
+            <TextBox Text="{Binding SelectedCustomer.City}" />
+            <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}" />
+            <Image Width="250" RenderOptions.BitmapScalingMode="HighQuality"  Source="{Binding SelectedCustomer.Photo}" />
+
+            <Button Command="{Binding  SendCommand }" Content="Send"  />
         </StackPanel>
+ 
 
     </Grid>
 </Page>
