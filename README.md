@@ -105,6 +105,29 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 ## Panele (LayoutControl)
 
 ### Grid
+~~~ xaml
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />     
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Button 
+            Grid.Column="0"
+            Width="200.5" Height="100" Background="Blue">Products</Button>
+        <Button 
+            Grid.Column="1" 
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Width="300" Height="200" Background="Green">Customers</Button>
+    </Grid>
+~~~
+
 ### StackPanel
 ### DockPanel
 ### WrapPanel
