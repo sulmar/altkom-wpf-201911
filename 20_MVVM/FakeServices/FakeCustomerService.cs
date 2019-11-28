@@ -5,6 +5,15 @@ using System.Collections.Generic;
 
 namespace FakeServices
 {
+    public class DbCustomerService : ICustomerService
+    {
+
+        public IEnumerable<Customer> Get()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class FakeCustomerService : ICustomerService
     {
         private readonly IEnumerable<Customer> customers;

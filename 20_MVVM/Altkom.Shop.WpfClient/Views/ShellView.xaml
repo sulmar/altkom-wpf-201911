@@ -3,9 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
+
+    <Window.Resources>
+       
+        
+        <sys:Double x:Key="MyButtonWidth">100</sys:Double>
+        <sys:Double x:Key="MyButtonHeight">70</sys:Double>
+
+        
+        
+    </Window.Resources>
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -27,8 +39,12 @@
             
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal">
-                <Button Background="Yellow" Foreground="Black" Margin="5" Width="300" Height="50">Customers</Button>
-                <Button Background="Blue"  Foreground="White" Margin="5" Width="250" Height="50">Products</Button>
+                <Button Style="{StaticResource CustomersButtonStyle}">Customers</Button>
+                <Button>Products</Button>
+                <Button>Products</Button>
+                <Button>Products</Button>
+                <Button>Products</Button>
+                <Button>Products</Button>
             </StackPanel>
             
         </DockPanel>
