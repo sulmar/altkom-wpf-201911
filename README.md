@@ -190,7 +190,7 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 
 ~~~ csharp
 
-public abstract class Base : INotifyPropertyChanged
+protected abstract class Base : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -201,6 +201,32 @@ public abstract class Base : INotifyPropertyChanged
         }
     }
 ~~~
+
+- Użycie
+
+~~~ csharp
+
+public class Customer : Base
+{
+    private string firstName;
+
+    public string FirstName
+    {
+        get => firstName; 
+        set
+        {
+            if (firstName != value)
+            {
+                firstName = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+~~~
+#### Biblioteka Fody 
+https://github.com/Fody/PropertyChanged
+
+
 
 ## Konwertery
 ### Konwerter wartości (IValueConverter)
