@@ -2,8 +2,104 @@
 
 ## XAML
 
+- XML + {markup extension} = XAML
+
 ###  Atrybuty i elementy
+
+- Zawartość taga
+~~~ xaml
+ <Button>Hello World</Button>
+~~~ 
+
+Zawartość pomiędzy tagami trafia do domyślnej właściwości. W przypadku kontrolki **ContentControl** jest to właściwość **Content**.
+
+- Za pomocą atrybutu
+~~~ xaml
+ <Button Content="Hello World" />
+~~~
+
+
+- Za pomocą elementu
+~~~ xaml
+ <Button>
+    <Button.Content>
+        Hello World
+    </Button.Content>
+</Button>
+~~~
+
+- Praktyczne zastosowanie
+
+~~~ xaml
+ <Button Content="Send">
+    <Button.Background>
+        <LinearGradientBrush 
+            StartPoint="0.0,0"
+            EndPoint="1,0">
+            <GradientStop Color="Green" Offset="0" />
+            <GradientStop Color="Yellow" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+        </LinearGradientBrush>
+    </Button.Background>
+ </Button>
+~~~
+
 ### Markup Extensions
+
+## Window i Page
+
+### Window
+
+Klasa **Window** jest samodzielnym widokiem. W Window nie można osadzić kolejnego Window, a jedynie otworzyć osobne okno.
+~~~ xaml
+<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+    </Grid>
+</Window>
+~~~
+
+### Page
+
+Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za pomocą klasy **Frame**.
+
+~~~ xaml
+<Page x:Class="CustomersView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomersView">
+    <Grid>
+
+    </Grid>
+</Page>
+~~~
+
+~~~ xaml
+<Window x:Class="WpfApp.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Shell" Height="450" Width="800">
+    <Grid>
+             <Frame Source="CustomersView.xaml" />
+    </Grid>
+</Window>
+~~~
+
 
 
 ## Panele (LayoutControl)
@@ -31,13 +127,55 @@
 
 
 ## Style (Styles)
+
 ### Utworzenie stylu
+~~~ xaml
+<SolidColorBrush x:Key="MyBackgroundBrush" Color="blue" />
+    <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
+
+    <Style x:Key="DefaultButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+~~~
+
+
+### Styl dla danego typu
+~~~ xaml
+ <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+    </Style>
+~~~
+
 ### Dziedziczenie stylu
+
+~~~ xaml
+
+    <Style x:Key="CustomersButtonStyle" TargetType="Button"
+               BasedOn="{StaticResource DefaultButtonStyle}"  >
+        <Setter Property="Background" Value="Green" />
+        <Setter Property="Width" Value="150" />
+    </Style>
+~~~
+
 
 ## Szablony (Templates)
 
 ### Szablon danych (DataTemplate)
-
+~~~ xaml
+ <DataTemplate x:Key="CustomerTemplate" DataType="{x:Type m:Customer}" >
+     <StackPanel Orientation="Horizontal">
+         <Image Source="{Binding Photo}" />
+         <TextBlock Text="{Binding FirstName}" />
+         <TextBlock Text="{Binding LastName}" />
+         <TextBlock Text="{Binding City}" />
+     </StackPanel>
+ </DataTemplate>
+ ~~~    
+ 
 ### Szablon kontrolek (ControlTemplate)
 
 ## Zasoby (Resources)
@@ -50,8 +188,62 @@
 ### Wiązanie kontrolek między sobą (Element Binding)
 ### Wiązanie kontrolek z danymi (DataBinding)
 ### Kontekst danych (DataContext)
+~~~ xaml
+<Page x:Class="Altkom.Shop.WpfClient.Views.CustomersView"
+      xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels">
+    <Page.DataContext>
+        <vm:CustomersViewModel />
+    </Page.DataContext>
+~~~
+
 ### Typy wiązania danych
+
+- TwoWay
+- OneWay
+- OneTime
+- OneWayToSource
+
 ### Implementacja notyfikacji (INotifyPropertyChanged)
+
+~~~ csharp
+
+protected abstract class Base : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+    }
+~~~
+
+- Użycie
+
+~~~ csharp
+
+public class Customer : Base
+{
+    private string firstName;
+
+    public string FirstName
+    {
+        get => firstName; 
+        set
+        {
+            if (firstName != value)
+            {
+                firstName = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+~~~
+#### Biblioteka Fody 
+https://github.com/Fody/PropertyChanged
+
+
 
 ## Konwertery
 ### Konwerter wartości (IValueConverter)
