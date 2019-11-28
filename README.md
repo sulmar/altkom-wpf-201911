@@ -188,6 +188,20 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 
 ### Implementacja notyfikacji (INotifyPropertyChanged)
 
+~~~ csharp
+
+public abstract class Base : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+    }
+~~~
+
 ## Konwertery
 ### Konwerter wartości (IValueConverter)
 ### Konwerter wielowartościowy (IMultiValueConverter)
