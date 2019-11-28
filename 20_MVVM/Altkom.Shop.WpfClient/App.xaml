@@ -4,9 +4,6 @@
              xmlns:local="clr-namespace:Altkom.Shop.WpfClient"
              StartupUri="Views/ShellView.xaml">
     <Application.Resources>
-
         <ResourceDictionary Source="Resources/Styles.xaml" />
-
-
     </Application.Resources>
 </Application>

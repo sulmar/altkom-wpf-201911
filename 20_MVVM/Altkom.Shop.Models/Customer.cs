@@ -9,9 +9,11 @@
             get => firstName; 
             set
             {
-                firstName = value;
-                OnPropertyChanged();
-               // OnPropertyChanged(nameof(FullName));
+                if (firstName != value)
+                {
+                    firstName = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public string LastName { get; set; }

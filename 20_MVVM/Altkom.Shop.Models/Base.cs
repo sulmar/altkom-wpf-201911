@@ -8,7 +8,7 @@ namespace Altkom.Shop.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged!=null)
             {
