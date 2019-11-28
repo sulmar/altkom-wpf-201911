@@ -231,13 +231,17 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 ## Wiązanie danych (Binding)
 ### Wiązanie kontrolek między sobą (Element Binding)
 ### Wiązanie kontrolek z danymi (DataBinding)
-### Kontekst danych (DataContext)
+
 ~~~ xaml
-<Page x:Class="Altkom.Shop.WpfClient.Views.CustomersView"
-      xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels">
-    <Page.DataContext>
-        <vm:CustomersViewModel />
-    </Page.DataContext>
+<StackPanel>
+   <TextBox Text="{Binding SelectedCustomer.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+   <TextBox Text="{Binding SelectedCustomer.LastName}" />
+   <TextBox Text="{Binding SelectedCustomer.FullName}" />
+   <TextBox Text="{Binding SelectedCustomer.City}" />
+   <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}" />
+   <Image Source="{Binding SelectedCustomer.Photo}" />
+   <Button Command="{Binding PrintCommand }" Content="Print"  />
+</StackPanel>
 ~~~
 
 ### Typy wiązania danych
