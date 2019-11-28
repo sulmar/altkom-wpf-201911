@@ -158,7 +158,6 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
                BasedOn="{StaticResource DefaultButtonStyle}"  >
         <Setter Property="Background" Value="Green" />
         <Setter Property="Width" Value="150" />
-
     </Style>
 ~~~
 
@@ -166,7 +165,17 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 ## Szablony (Templates)
 
 ### Szablon danych (DataTemplate)
-
+~~~ xaml
+ <DataTemplate x:Key="CustomerTemplate" DataType="{x:Type m:Customer}" >
+     <StackPanel Orientation="Horizontal">
+         <Image Source="{Binding Photo}" />
+         <TextBlock Text="{Binding FirstName}" />
+         <TextBlock Text="{Binding LastName}" />
+         <TextBlock Text="{Binding City}" />
+     </StackPanel>
+ </DataTemplate>
+ ~~~    
+ 
 ### Szablon kontrolek (ControlTemplate)
 
 ## Zasoby (Resources)
