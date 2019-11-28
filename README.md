@@ -122,8 +122,52 @@ Klasa **Page** nie jest samodzielnym widokiem. Musi być osadzony w Window za po
 ## Kontrolki wieloelementowe (ItemsControl)
 
 ### ListBox
+~~~ csharp
+<ListBox ItemsSource="{Binding Path=Customers, Mode=OneWay}"
+                 SelectedItem="{Binding SelectedCustomer}"
+                 ItemTemplate="{StaticResource CustomerTemplate}" >
+~~~
+
 ### ListView
+
+~~~ csharp
+<ListView ItemsSource="{Binding Path=Customers, Mode=OneWay}"
+                 SelectedItem="{Binding SelectedCustomer}"
+                 ItemTemplate="{StaticResource CustomerTemplate}" >
+~~~
+
+
+
+### ComboBox
+
+~~~ csharp
+<ComboBox ItemsSource="{Binding Path=Products, Mode=OneTime}"
+                 SelectedItem="{Binding SelectedProduct}"
+                 DisplayMemberPath="Name" >
+~~~
+
+
 ### DataGrid
+
+~~~ csharp
+ <DataGrid ItemsSource="{Binding Customers}"
+                  SelectedItem="{Binding SelectedCustomer}"
+                  AutoGenerateColumns="False">
+     <DataGrid.Columns>
+         <DataGridTemplateColumn>
+             <DataGridTemplateColumn.CellTemplate>
+                 <DataTemplate>
+                     <Image Style="{StaticResource ImageStyle}" Source="{Binding Photo}" />
+                 </DataTemplate>
+             </DataGridTemplateColumn.CellTemplate>
+         </DataGridTemplateColumn>
+         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" />
+         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" />
+         <DataGridTextColumn Header="Miasto" Binding="{Binding City}" />
+         <DataGridCheckBoxColumn Binding="{Binding IsRemoved}" />
+     </DataGrid.Columns>
+</DataGrid>
+~~~
 
 
 ## Style (Styles)
