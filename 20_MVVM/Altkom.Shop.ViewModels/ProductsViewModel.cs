@@ -33,6 +33,7 @@ namespace Altkom.Shop.ViewModels
 
         //}
 
+
         public ProductsViewModel(
             IProductService productService, 
             INavigationService navigationService)
@@ -45,12 +46,25 @@ namespace Altkom.Shop.ViewModels
             SearchCommand = new RelayCommand(Search);
 
         }
+     
 
         private void Search()
         {
             Products = productService.Get(Criteria);
 
+            foreach (var product in Products)
+            {
+                product.PropertyChanged += Product_PropertyChanged;
+            }
+
         }
 
+        private void Product_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+          if(e.PropertyName == nameof(Product.UnitPrice))
+            {
+                
+            }
+        }
     }
 }
