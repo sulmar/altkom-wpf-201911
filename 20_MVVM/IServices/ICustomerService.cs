@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace IServices
 {
-    public interface ICustomerService
+    public interface ICustomerService : IEntityService<Customer>
     {
-        IEnumerable<Customer> Get();
+        IEnumerable<Customer> GetByCity(string city);
     }
 }

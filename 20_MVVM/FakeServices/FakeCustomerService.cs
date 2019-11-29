@@ -1,6 +1,7 @@
 ﻿using Altkom.Shop.Models;
 using IServices;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FakeServices
 {
@@ -28,9 +29,34 @@ namespace FakeServices
             //};
         }
 
+        public void Add(Customer entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Customer> Get()
         {
             return customers;
+        }
+
+        public Customer Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Customer> GetByCity(string city)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(Customer entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
