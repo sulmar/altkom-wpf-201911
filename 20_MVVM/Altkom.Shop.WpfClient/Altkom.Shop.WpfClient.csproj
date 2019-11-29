@@ -62,6 +62,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FrameNavigationService.cs" />
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="Views\CustomersView.xaml.cs">
       <DependentUpon>CustomersView.xaml</DependentUpon>
     </Compile>
@@ -125,6 +127,14 @@
     <ProjectReference Include="..\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj">
       <Project>{a5cd46d7-38d9-45e7-82c8-5b73b43095d7}</Project>
       <Name>Altkom.Shop.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FakeServices\FakeServices.csproj">
+      <Project>{21AA5DD6-4ACC-4F79-9207-DEE6712E64EA}</Project>
+      <Name>FakeServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{EEAD63AE-E0BB-4F8B-B27E-3D8D1F6A0B5F}</Project>
+      <Name>IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

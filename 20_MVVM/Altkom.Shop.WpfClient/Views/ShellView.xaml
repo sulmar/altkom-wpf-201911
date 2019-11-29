@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
+        xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ShellViewModel}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
+
+    <!--<Window.DataContext>
+        <vm:ShellViewModel />
+    </Window.DataContext>-->
 
     <Window.Resources>
        
@@ -39,12 +45,8 @@
             
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource CustomersButtonStyle}">Customers</Button>
-                <Button>Products</Button>
-                <Button>Products</Button>
-                <Button>Products</Button>
-                <Button>Products</Button>
-                <Button>Products</Button>
+                <Button Command="{Binding ShowCustomersCommand}" Style="{StaticResource CustomersButtonStyle}">Customers</Button>
+                <Button Command="{Binding ShowProductsCommand}" >Products</Button>
             </StackPanel>
             
         </DockPanel>
@@ -52,9 +54,13 @@
 
         <!-- Content -->
         
-        <Frame Source="ProductsView.xaml"
+        <Frame 
+               x:Name="ContentFrame"
+               Source="ProductsView.xaml"
                Grid.Row="1" 
-               Margin="5" />
+               Margin="5" 
+               NavigationUIVisibility="Hidden"
+            />
 
     </Grid>
 </Window>

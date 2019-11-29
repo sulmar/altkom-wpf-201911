@@ -22,6 +22,7 @@ namespace Altkom.Shop.WpfClient.Views
         public ShellView()
         {
             InitializeComponent();
+
         }
     }
 }

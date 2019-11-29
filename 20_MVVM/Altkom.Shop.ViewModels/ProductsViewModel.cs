@@ -20,21 +20,25 @@ namespace Altkom.Shop.ViewModels
         }
 
         private readonly IProductService productService;
+        private readonly INavigationService navigationService;
         private IEnumerable<Product> products;
 
         public ICommand SearchCommand { get; set; }
 
         public ProductSearchCriteria Criteria { get; set; }
 
-        public ProductsViewModel()
-            : this(new FakeProductService())
-        {
+        //public ProductsViewModel()
+        //    : this(new FakeProductService(), new Fr)
+        //{
 
-        }
+        //}
 
-        public ProductsViewModel(IProductService productService)
+        public ProductsViewModel(
+            IProductService productService, 
+            INavigationService navigationService)
         {
             this.productService = productService;
+            this.navigationService = navigationService;
 
             Criteria = new ProductSearchCriteria();
 
@@ -45,6 +49,7 @@ namespace Altkom.Shop.ViewModels
         private void Search()
         {
             Products = productService.Get(Criteria);
+
         }
 
     }

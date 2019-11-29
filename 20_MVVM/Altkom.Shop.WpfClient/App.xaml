@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:Altkom.Shop.WpfClient"
              StartupUri="Views/ShellView.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="Resources/Styles.xaml" />
+
+        <ResourceDictionary>
+                <local:ViewModelLocator x:Key="ViewModelLocator" />
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Resources/Styles.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+        
     </Application.Resources>
 </Application>
