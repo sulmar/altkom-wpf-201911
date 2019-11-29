@@ -15,8 +15,20 @@
 
     <Grid>
 
-        <DataGrid ItemsSource="{Binding Products}"
-                  AutoGenerateColumns="True" />
+        <DockPanel>
 
+            <!-- Search Panel -->
+            <StackPanel DockPanel.Dock="Top">
+                <TextBox Text="{Binding Criteria.Color}" />
+                <TextBox Text="{Binding Criteria.From}" />
+                <TextBox Text="{Binding Criteria.To}" />
+                <Button Content="Search" Command="{Binding SearchCommand}" />
+            </StackPanel>
+
+            <!-- Results -->
+
+            <DataGrid ItemsSource="{Binding Products}"
+                      AutoGenerateColumns="True" />
+        </DockPanel>
     </Grid>
 </Page>
