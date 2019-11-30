@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Altkom.Shop.IServices\Altkom.Shop.IServices.csproj" />
     <ProjectReference Include="..\IServices\IServices.csproj" />
   </ItemGroup>
 

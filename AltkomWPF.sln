@@ -41,9 +41,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "03_LayoutControls
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.ViewModels", "20_MVVM\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj", "{A5CD46D7-38D9-45E7-82C8-5B73B43095D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IServices", "20_MVVM\IServices\IServices.csproj", "{EEAD63AE-E0BB-4F8B-B27E-3D8D1F6A0B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.IServices", "20_MVVM\Altkom.Shop.IServices\Altkom.Shop.IServices.csproj", "{EEAD63AE-E0BB-4F8B-B27E-3D8D1F6A0B5F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeServices", "20_MVVM\FakeServices\FakeServices.csproj", "{21AA5DD6-4ACC-4F79-9207-DEE6712E64EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.FakeServices", "20_MVVM\Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj", "{21AA5DD6-4ACC-4F79-9207-DEE6712E64EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "10_Bindings\WpfApp\WpfApp.csproj", "{F61263CE-ED27-4BCD-AE67-429173CD0319}"
 EndProject

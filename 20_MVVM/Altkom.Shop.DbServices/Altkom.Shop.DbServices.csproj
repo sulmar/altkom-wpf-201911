@@ -63,9 +63,9 @@
       <Project>{778025be-fefc-4549-8d9f-c6d62823e739}</Project>
       <Name>Altkom.Shop.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IServices\IServices.csproj">
+    <ProjectReference Include="..\Altkom.Shop.IServices\Altkom.Shop.IServices.csproj">
       <Project>{eead63ae-e0bb-4f8b-b27e-3d8d1f6a0b5f}</Project>
-      <Name>IServices</Name>
+      <Name>Altkom.Shop.IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

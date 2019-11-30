@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Altkom.Shop.Models\Altkom.Shop.Models.csproj" />
+    <ProjectReference Include="..\Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj" />
+    <ProjectReference Include="..\Altkom.Shop.IServices\Altkom.Shop.IServices.csproj" />
     <ProjectReference Include="..\FakeServices\FakeServices.csproj" />
     <ProjectReference Include="..\IServices\IServices.csproj" />
   </ItemGroup>

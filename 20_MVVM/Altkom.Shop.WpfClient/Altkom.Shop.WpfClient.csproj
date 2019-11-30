@@ -137,6 +137,14 @@
       <Project>{FE3146D2-D750-498C-8064-73CA78015C05}</Project>
       <Name>Altkom.Shop.DbServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj">
+      <Project>{21aa5dd6-4acc-4f79-9207-dee6712e64ea}</Project>
+      <Name>Altkom.Shop.FakeServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Altkom.Shop.IServices\Altkom.Shop.IServices.csproj">
+      <Project>{eead63ae-e0bb-4f8b-b27e-3d8d1f6a0b5f}</Project>
+      <Name>Altkom.Shop.IServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Altkom.Shop.Models\Altkom.Shop.Models.csproj">
       <Project>{778025be-fefc-4549-8d9f-c6d62823e739}</Project>
       <Name>Altkom.Shop.Models</Name>
@@ -144,14 +152,6 @@
     <ProjectReference Include="..\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj">
       <Project>{a5cd46d7-38d9-45e7-82c8-5b73b43095d7}</Project>
       <Name>Altkom.Shop.ViewModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FakeServices\FakeServices.csproj">
-      <Project>{21AA5DD6-4ACC-4F79-9207-DEE6712E64EA}</Project>
-      <Name>FakeServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServices\IServices.csproj">
-      <Project>{EEAD63AE-E0BB-4F8B-B27E-3D8D1F6A0B5F}</Project>
-      <Name>IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
