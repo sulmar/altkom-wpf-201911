@@ -318,6 +318,38 @@ https://github.com/Fody/PropertyChanged
 
 ## Konwertery
 ### Konwerter wartości (IValueConverter)
+
+~~~ csharp
+public class BoolToVisibiltyConverter : MarkupExtension, IValueConverter
+ {
+
+     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+     {
+         bool isVisible = (bool)value;
+
+         if (isVisible)
+             return Visibility.Visible;
+         else
+             return Visibility.Collapsed;
+     }
+
+     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+     {
+         throw new NotImplementedException();
+     }
+
+     public override object ProvideValue(IServiceProvider serviceProvider)
+     {
+         return this;
+     }
+ }
+ ~~~
+ 
+ 
+ ~~~ xaml
+<Button Content="Logout" Visibility="{Binding IsAuthenticated, Converter={c:BoolToVisibiltyConverter}}" />
+ ~~~
+ 
 ### Konwerter wielowartościowy (IMultiValueConverter)
 
 
