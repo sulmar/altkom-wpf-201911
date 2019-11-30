@@ -1,4 +1,5 @@
-﻿using Altkom.Shop.ViewModels;
+﻿using Altkom.Shop.DbServices;
+using Altkom.Shop.ViewModels;
 using Autofac;
 using FakeServices;
 using IServices;
@@ -21,7 +22,10 @@ namespace Altkom.Shop.WpfClient
         public ViewModelLocator()
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterType<FakeProductService>().As<IProductService>();
+           // containerBuilder.RegisterType<FakeProductService>().As<IProductService>();
+            containerBuilder.RegisterType<DbProductService>().As<IProductService>();
+            containerBuilder.RegisterType<ShopContext>();
+
             containerBuilder.RegisterType<ProductsViewModel>();
             containerBuilder.RegisterType<ShellViewModel>();
             containerBuilder.RegisterType<FrameNavigationService>().As<INavigationService>().SingleInstance();
